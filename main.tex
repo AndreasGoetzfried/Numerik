@@ -39,8 +39,39 @@
     Eine Norm auf den $X$ $\mathbb{K}$-Vektorraum ist eine Abbildung 
     $\norm{\cdot}:X\rightarrow[0,\infty)$, für die gilt:
     \begin{itemize}
-        \item $\norm{x}_1=\sum_{x=1}^N|x_n|$
+        \item $\norm{x}=0 \Leftrightarrow x=0$
+        \item $\norm{\alpha x}=|\alpha|\cdot \norm{x}$
+        \item $\norm{x+y}\le \norm{x}+\norm{y}$
     \end{itemize}
-\subsubsection{Vektornorm}
-
+    Es gibt verschiedene wichtige \textbf{Vektornormen}, wie
+    \begin{itemize}
+        \item Betragssummennorm: $\norm{x}_1=\sum_{n=1}^N|x_n|$
+        \item Euklidische Norm: $\norm{x}_2=\sqrt{\sum_{n=1}^N|x_n|^2}$
+        \item Maximumsnorm: $\norm{x}_\infty=\max_{n=1,...,N}|x_n|$
+    \end{itemize}
+    und auch einige wichtige \textbf{Matrixnormen}, wie
+    \begin{itemize}
+        \item Spaltensummennorm: $\norm{A}_1=\max_{1\le m\le N}\sum_{n=1}^N|a_{nm}|$
+        \item Zeilensummennorm: $\norm{A}_1=\max_{1\le n\le N}\sum_{m=1}^N|a_{nm}|$
+        \item Frobenius/Hilbert-Schmidtnorm: $\norm{A}_F=\sqrt{\sum_{n,m=1}^N|a_{nm}|}$
+    \end{itemize}
+    Ein wichtiger Satz ist $\forall_{x,y\in X}|\norm{x}-\norm{y}|\le \norm{x-y}$.\newline
+    Die von einer Vektornorm \textbf{induzierte Matrixnorm} ist
+    \begin{equation}
+        \norm{A}\coloneqq \sup_{x\not= 0}\frac{\norm{Ax}}{\norm{x}}
+    \end{equation}
+    und, für welche die \textbf{Submultiplikativität} gilt
+    \begin{equation}
+        \forall_{A,B\in\mathbb{K}^{N\times N}}\norm{AB}\le\norm{A}\norm{B}
+    \end{equation}
+    Ein weiterer Satz behauptet, dass für die induzierten Matrixnormen $\norm{A}_2 \le \norm{A}_F \wedge \norm{A}_2 \le \sqrt{\norm{A}_2\norm{A}_\infty}$ gilt. Ebenso ist $\norm{A}_F= \sqrt{\sum_{n=1}^N\lambda_n(A^*A)}$ mit $\lambda_i$ als Eigenwerten von $A^*A$.\newline
+    Sei $A^*A$ noch hermitsch und positiv definit, dann $\norm{A}_2 = \sqrt{\max_{1\le n\le N}\lambda_n(A^*A)}$. Sei zusätzlich noch $A$ hermitsch gilt $\norm{A}_2=\max_{1\le n\le N}|\lambda_n(A)|$.\newline
+    \textbf{Definition: Konditionszahl}\newline
+    Die Konditionszahl einer regulären Matrix $A\in \mathbb{K}^{N\times N}$ bezüglich der einer Matrixnorm ist $\textrm{cond} A \coloneqq  \norm{A} \norm{A^{-1}}$.\newline
+    Die Konditionszahl bleibt bei Multiplikation mit einem Element aus $\mathbb{K}$ gleich.\newline
+    Als wichtiger Satz gilt 
+    \begin{equation}
+        \textrm{cond} A =\frac{\sup_{\norm{x}=1}\norm{Ax}}{\inf_{\norm{x}=1}\norm{Ax}}
+    \end{equation}
+    Bezüglich der euklidischen Norm kann dieser Satz noch vereinfacht werden zu $\textrm{cond} A = \sqrt{\max_n\lambda_n(A^*A)/\min_n\lambda_n(A^*A)}$. Insbesondere für $A$ hermitsch $\textrm{cond} A = \max_n\lambda_n(A)/\min_n\lambda_n(A)$.
 \end{document}
