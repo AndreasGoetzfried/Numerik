@@ -16,7 +16,7 @@
     \centering
 	    \includegraphics[width=90mm]{logo_lmu.jpg}
     \end{figure}
-	{\scshape\LARGE Ludwigs-Maximilians Universität \par}
+	{\scshape\LARGE Ludwig-Maximilians Universität \par}
 	\vspace{1cm}
 	{\scshape\Large Skript \par}
 	\vspace{1.5cm}
@@ -43,19 +43,21 @@
         \item $\norm{\alpha x}=|\alpha|\cdot \norm{x}$
         \item $\norm{x+y}\le \norm{x}+\norm{y}$
     \end{itemize}
+\subsubsection{Vektornorm}
     Es gibt verschiedene wichtige \textbf{Vektornormen}, wie
     \begin{itemize}
         \item Betragssummennorm: $\norm{x}_1=\sum_{n=1}^N|x_n|$
         \item Euklidische Norm: $\norm{x}_2=\sqrt{\sum_{n=1}^N|x_n|^2}$
         \item Maximumsnorm: $\norm{x}_\infty=\max_{n=1,...,N}|x_n|$
     \end{itemize}
-    und auch einige wichtige \textbf{Matrixnormen}, wie
+    Ein wichtiger Satz ist $\forall_{x,y\in X}|\norm{x}-\norm{y}|\le \norm{x-y}$.
+\subsubsection{Matrixnorm}
+    Auch existieren einige wichtige \textbf{Matrixnormen}, wie
     \begin{itemize}
         \item Spaltensummennorm: $\norm{A}_1=\max_{1\le m\le N}\sum_{n=1}^N|a_{nm}|$
-        \item Zeilensummennorm: $\norm{A}_1=\max_{1\le n\le N}\sum_{m=1}^N|a_{nm}|$
-        \item Frobenius/Hilbert-Schmidtnorm: $\norm{A}_F=\sqrt{\sum_{n,m=1}^N|a_{nm}|}$
+        \item Zeilensummennorm: $\norm{A}_\infty=\max_{1\le n\le N}\sum_{m=1}^N|a_{nm}|$
+        \item Frobenius/Hilbert-Schmidtnorm: $\norm{A}_F=\sqrt{\sum_{n,m=1}^N|a_{nm}|^2 }$
     \end{itemize}
-    Ein wichtiger Satz ist $\forall_{x,y\in X}|\norm{x}-\norm{y}|\le \norm{x-y}$.\newline
     Die von einer Vektornorm \textbf{induzierte Matrixnorm} ist
     \begin{equation}
         \norm{A}\coloneqq \sup_{x\not= 0}\frac{\norm{Ax}}{\norm{x}}
@@ -65,7 +67,8 @@
         \forall_{A,B\in\mathbb{K}^{N\times N}}\norm{AB}\le\norm{A}\norm{B}
     \end{equation}
     Ein weiterer Satz behauptet, dass für die induzierten Matrixnormen $\norm{A}_2 \le \norm{A}_F \wedge \norm{A}_2 \le \sqrt{\norm{A}_2\norm{A}_\infty}$ gilt. Ebenso ist $\norm{A}_F= \sqrt{\sum_{n=1}^N\lambda_n(A^*A)}$ mit $\lambda_i$ als Eigenwerten von $A^*A$.\newline
-    Sei $A^*A$ noch hermitsch und positiv definit, dann $\norm{A}_2 = \sqrt{\max_{1\le n\le N}\lambda_n(A^*A)}$. Sei zusätzlich noch $A$ hermitsch gilt $\norm{A}_2=\max_{1\le n\le N}|\lambda_n(A)|$.\newline
+    Sei $A^*A$ noch hermitsch und positiv definit, dann $\norm{A}_2 = \sqrt{\max_{1\le n\le N}\lambda_n(A^*A)}$. Sei zusätzlich noch $A$ hermitsch gilt $\norm{A}_2=\max_{1\le n\le N}|\lambda_n(A)|$.
+\subsubsection{Konditionszahl}
     \textbf{Definition: Konditionszahl}\newline
     Die Konditionszahl einer regulären Matrix $A\in \mathbb{K}^{N\times N}$ bezüglich der einer Matrixnorm ist $\textrm{cond} A \coloneqq  \norm{A} \norm{A^{-1}}$.\newline
     Die Konditionszahl bleibt bei Multiplikation mit einem Element aus $\mathbb{K}$ gleich.\newline
@@ -74,4 +77,20 @@
         \textrm{cond} A =\frac{\sup_{\norm{x}=1}\norm{Ax}}{\inf_{\norm{x}=1}\norm{Ax}}
     \end{equation}
     Bezüglich der euklidischen Norm kann dieser Satz noch vereinfacht werden zu $\textrm{cond} A = \sqrt{\max_n\lambda_n(A^*A)/\min_n\lambda_n(A^*A)}$. Insbesondere für $A$ hermitsch $\textrm{cond} A = \max_n\lambda_n(A)/\min_n\lambda_n(A)$.
+    Ein weiterer wichtiger Satz für reguläre (invertierbare) Matrizen $A\in \mathbb{K}^{N\times N}$ ist 
+    \begin{equation}
+        b,x,\Delta b,\Delta x\in \mathbb{K} \wedge A\cdot x=b\wedge A(x+\Delta x)=b + \Delta b \Rightarrow 
+    \end{equation}
+    \begin{equation*}
+        \norm{\Delta x}\le \norm{A^{-1}} \norm{\Delta b}\wedge \frac{\norm{\Delta x}}{\norm{x}} \le \textrm{cond} A \cdot  \frac{\norm{\Delta b}}{\norm{b}}
+    \end{equation*}
+\subsubsection{Störungsresultate für Matrizen}
+    Ein sehr wichtiges Lemma zu Störungsresultaten ist folgendes. Sei $\norm{\cdot}$ induziert und $B\in \mathbb{K}^{N\times N}$ mit $\norm{B}<1$. Dann ist $\mathbb{1}+B$ regulär mit $\norm{(\mathbb{1}+B)^{-1}}\le \frac{1}{1-\norm{B}}$ \textbf{HIER FEHLT ETWAS UND MAN MUSS SCHAUEN OB 1 DIE EINHEITSMATRIX ODER DIE EINSMATRIX IST!!!!!!!}\newline
+    \textbf{Definition: diagonaldominante Matrix}\newline
+    Eine Matrix $A\in \mathbb{K}^{N\times N}$ heißt strikt diagonaldominant, wenn $\forall_{n=1,...,N}|a_{nn}|>\sum_{m=1,m\not = n}^N|a_{nm}|$.\newline 
+    Ein wichtiges Lemma zu diagonaldominanten Matrizen $A$ ist, dass diese dann regulär sind und $\norm{A^{-1}}\le \max_{1\le n\le N}(|a_{nn}|-\sum_{m\not = n}|a_{nm}|)^{-1}$.
+\subsection{LR-Zerlegung}
+
+\newpage
+\section{weitere Section}
 \end{document}
